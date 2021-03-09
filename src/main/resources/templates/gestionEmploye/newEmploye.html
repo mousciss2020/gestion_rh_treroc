@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<!-- index.html  21 Nov 2019 03:44:50 GMT-->
+<head>
+    <span th:replace="fragment/menus::headers"></span>
+</head>
+
+<body>
+<div class="loader"></div>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <!-- navbar -->
+        <span th:replace="fragment/menus::navbar"></span>
+
+        <!-- sidebar -->
+        <span th:replace="fragment/menus::sidebar"></span>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#"><i class="fas fa-tachometer-alt"></i> home
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#"><i class="fas fa-user-edit"></i>new employe
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-2">
+                    <p>Dashboard</p>
+                </div>
+            </div>
+            <section class="section">
+                <div class="section-body">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <form th:action="@{/new-employe}" th:object="${employe}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate="">
+                            <div class="card">
+                                <div class="card-header" style="background-color: #f5f5f5">
+                                    NEW EMPLOYÉ
+                                </div>
+                                <div class="card-body">
+                                    <div id="accordion">
+                                        <div class="accordion">
+                                            <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-1"
+                                                 aria-expanded="true">
+                                                <h4>Informations générales</h4>
+                                            </div>
+                                            <div class="accordion-body collapse show" id="panel-body-1" data-parent="#accordion">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <label>CIN</label>
+                                                            <input type="text" class="form-control" th:field="*{cin}" placeholder="cin" required="">
+                                                            <div class="invalid-feedback">
+                                                                Votre CIN?
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Prenom</label>
+                                                                    <input type="text" class="form-control" th:field="*{prenom}" required="">
+                                                                    <div class="invalid-feedback">
+                                                                        Votre prenom?
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Nom</label>
+                                                                    <input type="text" class="form-control" th:field="*{nom}" required="">
+                                                                    <div class="invalid-feedback">
+                                                                        Votre nom?
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Email</label>
+                                                                    <input type="email" class="form-control" th:field="*{email}" required="">
+                                                                    <div class="invalid-feedback">
+                                                                        Votre email?
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Téléphone</label>
+                                                                    <input type="text" class="form-control" th:field="*{telephone}" required="">
+                                                                    <div class="invalid-feedback">
+                                                                        Votre phone number?
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>PHOTO</label>
+                                                            <div id="image-preview" class="image-preview">
+                                                                <label for="image-upload" id="image-label">Choisie une photo</label>
+                                                                <input type="file" name="image" id="image-upload" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Date de naissance</label>
+                                                            <input type="date" class="form-control datepicker" th:field="*{dateNaiss}" required="">
+                                                            <div class="invalid-feedback">
+                                                                Votre date de naissance?
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Ville</label>
+                                                            <input type="text" class="form-control" th:field="*{lieuxNaiss}" placeholder="city" required="">
+                                                            <div class="invalid-feedback">
+                                                                Votre ville?
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Pays</label>
+                                                            <select class="form-control select2" th:field="*{pays}">
+                                                                <optgroup label="Europe">
+                                                                    <option value="ALBANIE">ALBANIE</option>
+                                                                    <option value="ALLEMAGNE">ALLEMAGNE</option>
+                                                                    <option value="ANDORRE">ANDORRE</option>
+                                                                    <option value="ARUBA">ARUBA</option>
+                                                                    <option value="AUTRICHE">AUTRICHE</option>
+                                                                    <option value="BELGIQUE">BELGIQUE</option>
+                                                                    <option value="148">BIELORUSSIE</option>
+                                                                    <option value="BIELORUSSIE">BOSNIE-HERZEGOVINE</option>
+                                                                    <option value="BOUVET">BOUVET (ILE)</option>
+                                                                    <option value="BULGARIE">BULGARIE</option>
+                                                                    <option value="CROATIE">CROATIE</option>
+                                                                    <option value="DANEMARK">DANEMARK</option>
+                                                                    <option value="134">ESPAGNE</option>
+                                                                    <option value="ESPAGNE">ESTONIE</option>
+                                                                    <option value="YOUGOSLAVE">EX-REPUBLIQUE YOUGOSLAVE DE MACEDOINE</option>
+                                                                    <option value="FEROE">FEROE (ILES)</option>
+                                                                    <option value="FINLANDE">FINLANDE</option>
+                                                                    <option value="GIBRALTAR">GIBRALTAR</option>
+                                                                    <option value="GRECE">GRECE</option>
+                                                                    <option value="GUERNESEY">GUERNESEY</option>
+                                                                    <option value="HONGRIE">HONGRIE</option>
+                                                                    <option value="IRLANDE">IRLANDE, ou EIRE</option>
+                                                                    <option value="ISLANDE">ISLANDE</option>
+                                                                    <option value="ITALIE">ITALIE</option>
+                                                                    <option value="JERSEY">JERSEY</option>
+                                                                    <option value="KOSOVO">KOSOVO</option>
+                                                                    <option value="LETTONIE">LETTONIE</option>
+                                                                    <option value="LIECHTENSTEIN">LIECHTENSTEIN</option>
+                                                                    <option value="LITUANIE">LITUANIE</option>
+                                                                    <option value="LUXEMBOURG">LUXEMBOURG</option>
+                                                                    <option value="MAN">MALTE</option>
+                                                                    <option value="MAN">MAN (ILE)</option>
+                                                                    <option value="MOLDAVIE">MOLDAVIE</option>
+                                                                    <option value="MONACO">MONACO</option>
+                                                                    <option value="MONTENEGRO">MONTENEGRO</option>
+                                                                    <option value="NORVEGE">NORVEGE</option>
+                                                                    <option value="PAYS-BAS">PAYS-BAS</option>
+                                                                    <option value="POLOGNE">POLOGNE</option>
+                                                                    <option value="PORTUGAL">PORTUGAL</option>
+                                                                    <option value="ALLEMANDE">REPUBLIQUE DEMOCRATIQUE ALLEMANDE</option>
+                                                                    <option value="ALLEMAGNE">REPUBLIQUE FEDERALE D'ALLEMAGNE</option>
+                                                                    <option value="ROUMANIE">ROUMANIE</option>
+                                                                    <option value="ROYAUME-UNI">ROYAUME-UNI</option>
+                                                                    <option value="RUSSIE">RUSSIE</option>
+                                                                    <option value="SAINT-MARIN">SAINT-MARIN</option>
+                                                                    <option value="SERBIE">SERBIE</option>
+                                                                    <option value="SLOVAQUIE">SLOVAQUIE</option>
+                                                                    <option value="SLOVENIE">SLOVENIE</option>
+                                                                    <option value="SUEDE">SUEDE</option>
+                                                                    <option value="SUISSE">SUISSE</option>
+                                                                    <option value="SVALBARD">SVALBARD et ILE JAN MAYEN</option>
+                                                                    <option value="TCHECOSLOVAQUIE">TCHECOSLOVAQUIE</option>
+                                                                    <option value="TCHEQUE (REPUBLIQUE)">TCHEQUE (REPUBLIQUE)</option>
+                                                                    <option value=">TURQUIE">TURQUIE D'EUROPE</option>
+                                                                    <option value="UKRAINE">UKRAINE</option>
+                                                                    <option value="VATICAN">VATICAN, ou SAINT-SIEGE</option>
+                                                                </optgroup>
+                                                                <optgroup label="Asie">
+                                                                    <option value="AFGHANISTAN">AFGHANISTAN</option>
+                                                                    <option value="ARABIE SAOUDITE">ARABIE SAOUDITE</option>
+                                                                    <option value="ARMENIE">ARMENIE</option>
+                                                                    <option value="AZERBAIDJAN">AZERBAIDJAN</option>
+                                                                    <option value="BAHREIN">BAHREIN</option>
+                                                                    <option value="BANGLADESH">BANGLADESH</option>
+                                                                    <option value="BHOUTAN">BHOUTAN</option>
+                                                                    <option value="BIRMANIE">BIRMANIE</option>
+                                                                    <option value="BRUNEI">BRUNEI</option>
+                                                                    <option value="CAMBODGE">CAMBODGE</option>
+                                                                    <option value="CHINE">CHINE</option>
+                                                                    <option value="CHYPRE">CHYPRE</option>
+                                                                    <option value="COREE">COREE</option>
+                                                                    <option value="COREE (REPUBLIQUE DE)">COREE (REPUBLIQUE DE)</option>
+                                                                    <option value="COREE (REPUBLIQUE POPULAIRE DEMOCRATIQUE DE)">COREE (REPUBLIQUE POPULAIRE DEMOCRATIQUE DE)</option>
+                                                                    <option value="EMIRATS ARABES UNIS">EMIRATS ARABES UNIS</option>
+                                                                    <option value="ETATS MALAIS ">ETATS MALAIS NON FEDERES</option>
+                                                                    <option value="GEORGIE">GEORGIE</option>
+                                                                    <option value="GOA">GOA</option>
+                                                                    <option value="HONG-KONG">HONG-KONG</option>
+                                                                    <option value="INDE">INDE</option>
+                                                                    <option value="INDONESIE">INDONESIE</option>
+                                                                    <option value="IRAN">IRAN</option>
+                                                                    <option value="IRAQ">IRAQ</option>
+                                                                    <option value="ISRAEL">ISRAEL</option>
+                                                                    <option value="JAPON">JAPON</option>
+                                                                    <option value="JORDANIE">JORDANIE</option>
+                                                                    <option value="KAMTCHATKA">KAMTCHATKA</option>
+                                                                    <option value="KAZAKHSTAN">KAZAKHSTAN</option>
+                                                                    <option value="KIRGHIZISTAN">KIRGHIZISTAN</option>
+                                                                    <option value="KOWEIT">KOWEIT</option>
+                                                                    <option value="LAOS">LAOS</option>
+                                                                    <option value="LIBAN">LIBAN</option>
+                                                                    <option value="MACAO">MACAO</option>
+                                                                    <option value="MALAISIE">MALAISIE</option>
+                                                                    <option value="MALDIVES">MALDIVES</option>
+                                                                    <option value="MANDCHOURIE">MANDCHOURIE</option>
+                                                                    <option value="MONGOLIE">MONGOLIE</option>
+                                                                    <option value="NEPAL">NEPAL</option>
+                                                                    <option value="OMAN">OMAN</option>
+                                                                    <option value="OUZBEKISTAN">OUZBEKISTAN</option>
+                                                                    <option value="PAKISTAN">PAKISTAN</option>
+                                                                    <option value="PALESTINE">PALESTINE (Etat de)</option>
+                                                                    <option value="PHILIPPINES">PHILIPPINES</option>
+                                                                    <option value="BRITANNIQUES">POSSESSIONS BRITANNIQUES AU PROCHE-ORIENT</option>
+                                                                    <option value="QATAR">QATAR</option>
+                                                                    <option value="SIBERIE">SIBERIE</option>
+                                                                    <option value="SINGAPOUR">SINGAPOUR</option>
+                                                                    <option value="SRI LANKA">SRI LANKA</option>
+                                                                    <option value="SYRIE">SYRIE</option>
+                                                                    <option value="TADJIKISTAN">TADJIKISTAN</option>
+                                                                    <option value="TAIWAN">TAIWAN</option>
+                                                                    <option value="THAILANDE">THAILANDE</option>
+                                                                    <option value="TIMOR ORIENTAL">TIMOR ORIENTAL</option>
+                                                                    <option value="TURKESTAN RUSSE">TURKESTAN RUSSE</option>
+                                                                    <option value="TURKMENISTAN">TURKMENISTAN</option>
+                                                                    <option value="TURQUIE">TURQUIE</option>
+                                                                    <option value="VIET NAM">VIET NAM</option>
+                                                                    <option value="VIET NAM DU NORD">VIET NAM DU NORD</option>
+                                                                    <option value="VIET NAM DU SUD">VIET NAM DU SUD</option>
+                                                                    <option value="YEMEN">YEMEN</option>
+                                                                    <option value="YEMEN DEMOCRATIQUE">YEMEN DEMOCRATIQUE</option>
+                                                                    <option value="YEMEN (REPUBLIQUE ARABE DU)">YEMEN (REPUBLIQUE ARABE DU)</option>
+                                                                </optgroup>
+                                                                <optgroup label="Afrique">
+                                                                    <option value="ACORES">ACORES, MADERE</option>
+                                                                    <option value="AFRIQUE DU SUD">AFRIQUE DU SUD</option>
+                                                                    <option value="ALGERIE">ALGERIE</option>
+                                                                    <option value="ANGOLA">ANGOLA</option>
+                                                                    <option value="BENIN">BENIN</option>
+                                                                    <option value="BOTSWANA">BOTSWANA</option>
+                                                                    <option value="BURKINA">BURKINA</option>
+                                                                    <option value="BURUNDI">BURUNDI</option>
+                                                                    <option value="CAMEROUN">CAMEROUN</option>
+                                                                    <option value="TOGO">CAMEROUN ET TOGO</option>
+                                                                    <option value="CANARIES">CANARIES (ILES)</option>
+                                                                    <option value="CAP-VERT">CAP-VERT</option>
+                                                                    <option value="CENTRAFRICAINE  (REPUBLIQUE)">CENTRAFRICAINE (REPUBLIQUE)</option>
+                                                                    <option value="COMORES">COMORES</option>
+                                                                    <option value="CONGO">CONGO</option>
+                                                                    <option value="CONGO (REPUBLIQUE DEMOCRATIQUE)">CONGO (REPUBLIQUE DEMOCRATIQUE)</option>
+                                                                    <option value="COTE D'IVOIRE">COTE D'IVOIRE</option>
+                                                                    <option value="DJIBOUTI">DJIBOUTI</option>
+                                                                    <option value="EGYPTE">EGYPTE</option>
+                                                                    <option value="ERYTHREE">ERYTHREE</option>
+                                                                    <option value="ETHIOPIE">ETHIOPIE</option>
+                                                                    <option value="GABON">GABON</option>
+                                                                    <option value="GAMBIE">GAMBIE</option>
+                                                                    <option value="GHANA">GHANA</option>
+                                                                    <option value="GUINEE">GUINEE</option>
+                                                                    <option value="GUINEE EQUATORIALE">GUINEE EQUATORIALE</option>
+                                                                    <option value="GUINEE-BISSAU">GUINEE-BISSAU</option>
+                                                                    <option value="320">ILES PORTUGAISES DE L'OCEAN INDIEN</option>
+                                                                    <option value="KENYA">KENYA</option>
+                                                                    <option value="LESOTHO">LESOTHO</option>
+                                                                    <option value="LIBERIA">LIBERIA</option>
+                                                                    <option value="LIBERIA">LIBERIA</option>
+                                                                    <option value="MADAGASCAR">MADAGASCAR</option>
+                                                                    <option value="MALAWI">MALAWI</option>
+                                                                    <option value="MALI">MALI</option>
+                                                                    <option value="MAROC">MAROC</option>
+                                                                    <option value="MAURICE">MAURICE</option>
+                                                                    <option value="MAURITANIE">MAURITANIE</option>
+                                                                    <option value="MOZAMBIQUE">MOZAMBIQUE</option>
+                                                                    <option value="NAMIBIE">NAMIBIE</option>
+                                                                    <option value="NIGER">NIGER</option>
+                                                                    <option value="NIGERIA">NIGERIA</option>
+                                                                    <option value="308">OCEAN INDIEN (TERRITOIRE BRITANNIQUE DE L')</option>
+                                                                    <option value="OUGANDA">OUGANDA</option>
+                                                                    <option value="PRESIDES">PRESIDES</option>
+                                                                    <option value="313">PROVINCES ESPAGNOLES D'AFRIQUE</option>
+                                                                    <option value="RWANDA">RWANDA</option>
+                                                                    <option value="SAHARA OCCIDENTAL">SAHARA OCCIDENTAL</option>
+                                                                    <option value="306">SAINTE HELENE, ASCENSION ET TRISTAN DA CUNHA</option>
+                                                                    <option value="SAO TOME-ET-PRINCIPE">SAO TOME-ET-PRINCIPE</option>
+                                                                    <option value="SENEGAL">SENEGAL</option>
+                                                                    <option value="SEYCHELLES">SEYCHELLES</option>
+                                                                    <option value="SIERRA LEONE">SIERRA LEONE</option>
+                                                                    <option value="SOMALIE">SOMALIE</option>
+                                                                    <option value="SOUDAN">SOUDAN</option>
+                                                                    <option value="307">SOUDAN ANGLO-EGYPTIEN, KENYA, OUGANDA</option>
+                                                                    <option value="SOUDAN DU SUD">SOUDAN DU SUD</option>
+                                                                    <option value="SWAZILAND">SWAZILAND</option>
+                                                                    <option value="TANGER">TANGER</option>
+                                                                    <option value="TANZANIE">TANZANIE</option>
+                                                                    <option value="TCHAD">TCHAD</option>
+                                                                    <option value="TOGO">TOGO</option>
+                                                                    <option value="TUNISIE">TUNISIE</option>
+                                                                    <option value="ZAMBIE">ZAMBIE</option>
+                                                                    <option value="ZANZIBAR">ZANZIBAR</option>
+                                                                    <option value="ZIMBABWE">ZIMBABWE</option>
+                                                                </optgroup>
+                                                                <optgroup label="Amérique">
+                                                                    <option value="ALASKA">ALASKA</option>
+                                                                    <option value="ANGUILLA">ANGUILLA</option>
+                                                                    <option value="ANTIGUA-ET-BARBUDA">ANTIGUA-ET-BARBUDA</option>
+                                                                    <option value="ANTILLES NEERLANDAISES">ANTILLES NEERLANDAISES</option>
+                                                                    <option value="ARGENTINE">ARGENTINE</option>
+                                                                    <option value="BAHAMAS">BAHAMAS</option>
+                                                                    <option value="BARBADE">BARBADE</option>
+                                                                    <option value="BELIZE">BELIZE</option>
+                                                                    <option value="BERMUDES">BERMUDES</option>
+                                                                    <option value="BOLIVIE">BOLIVIE</option>
+                                                                    <option value="BONAIRE">BONAIRE, SAINT EUSTACHE ET SABA</option>
+                                                                    <option value="BRESIL">BRESIL</option>
+                                                                    <option value="CAIMANES">CAIMANES (ILES)</option>
+                                                                    <option value="CANADA">CANADA</option>
+                                                                    <option value="CHILI">CHILI</option>
+                                                                    <option value="COLOMBIE">COLOMBIE</option>
+                                                                    <option value="COSTA RICA">COSTA RICA</option>
+                                                                    <option value="CUBA">CUBA</option>
+                                                                    <option value="CURAÇAO">CURAÇAO</option>
+                                                                    <option value="DOMINICAINE (REPUBLIQUE)">DOMINICAINE (REPUBLIQUE)</option>
+                                                                    <option value="DOMINIQUE">DOMINIQUE</option>
+                                                                    <option value="EL SALVADOR">EL SALVADOR</option>
+                                                                    <option value="EQUATEUR">EQUATEUR</option>
+                                                                    <option value="ETATS-UNIS">ETATS-UNIS</option>
+                                                                    <option value="GEORGIE DU SUD">GEORGIE DU SUD ET LES ILES SANDWICH DU SUD</option>
+                                                                    <option value="GRENADE">GRENADE</option>
+                                                                    <option value="GROENLAND">GROENLAND</option>
+                                                                    <option value="GUATEMALA">GUATEMALA</option>
+                                                                    <option value="GUYANA">GUYANA</option>
+                                                                    <option value="HAITI">HAITI</option>
+                                                                    <option value="HONDURAS">HONDURAS</option>
+                                                                    <option value="JAMAIQUE">JAMAIQUE</option>
+                                                                    <option value="403">LABRADOR</option>
+                                                                    <option value="LABRADOR">MALOUINES, OU FALKLAND (ILES)</option>
+                                                                    <option value="MEXIQUE">MEXIQUE</option>
+                                                                    <option value="MONTSERRAT">MONTSERRAT</option>
+                                                                    <option value="NICARAGUA">NICARAGUA</option>
+                                                                    <option value="PANAMA">PANAMA</option>
+                                                                    <option value="PARAGUAY">PARAGUAY</option>
+                                                                    <option value="PEROU">PEROU</option>
+                                                                    <option value="PORTO RICO">PORTO RICO</option>
+                                                                    <option value="SAINT-CHRISTOPHE-ET-NIEVES">SAINT-CHRISTOPHE-ET-NIEVES</option>
+                                                                    <option value="SAINTE-LUCIE">SAINTE-LUCIE</option>
+                                                                    <option value="SAINT-MARTIN (PARTIE NEERLANDAISE)">SAINT-MARTIN (PARTIE NEERLANDAISE)</option>
+                                                                    <option value="GRENADINES">SAINT-VINCENT-ET-LES GRENADINES</option>
+                                                                    <option value="SURINAME">SURINAME</option>
+                                                                    <option value="432">TERR. DES ETATS-UNIS D'AMERIQUE EN AMERIQUE</option>
+                                                                    <option value="427">TERR. DU ROYAUME-UNI DANS L'ATLANTIQUE SUD</option>
+                                                                    <option value="TERRE-NEUVE">TERRE-NEUVE</option>
+                                                                    <option value="425">TERRITOIRES DU ROYAUME-UNI AUX ANTILLES</option>
+                                                                    <option value="TRINITE-ET-TOBAGO">TRINITE-ET-TOBAGO</option>
+                                                                    <option value="TURKS ET CAIQUES">TURKS ET CAIQUES (ILES)</option>
+                                                                    <option value="URUGUAY">URUGUAY</option>
+                                                                    <option value="VENEZUELA">VENEZUELA</option>
+                                                                    <option value="VIERGES BRITANNIQUES">VIERGES BRITANNIQUES (ILES)</option>
+                                                                    <option value="432">VIERGES DES ETATS-UNIS (ILES)</option>
+                                                                </optgroup>
+                                                                <optgroup label="Océanie">
+                                                                    <option value="AUSTRALIE">AUSTRALIE</option>
+                                                                    <option value="CHRISTMAS">CHRISTMAS (ILE)</option>
+                                                                    <option value="COCOS ou KEELING">COCOS ou KEELING (ILES)</option>
+                                                                    <option value="COOK ">COOK (ILES)</option>
+                                                                    <option value="FIDJI">FIDJI</option>
+                                                                    <option value="GUAM">GUAM</option>
+                                                                    <option value="HAWAII">HAWAII (ILES)</option>
+                                                                    <option value="HEARD ET MACDONALD">HEARD ET MACDONALD (ILES)</option>
+                                                                    <option value="KIRIBATI">KIRIBATI</option>
+                                                                    <option value="MARIANNES DU NORD">MARIANNES DU NORD (ILES)</option>
+                                                                    <option value="MARSHALL">MARSHALL (ILES)</option>
+                                                                    <option value="MICRONESIE">MICRONESIE (ETATS FEDERES DE)</option>
+                                                                    <option value="NAURU">NAURU</option>
+                                                                    <option value="NIUE">NIUE</option>
+                                                                    <option value="NORFOLK">NORFOLK (ILE)</option>
+                                                                    <option value="NOUVELLE-ZELANDE<">NOUVELLE-ZELANDE</option>
+                                                                    <option value="PALAOS">PALAOS (ILES)</option>
+                                                                    <option value="PAPOUASIE-NOUVELLE-GUINEE">PAPOUASIE-NOUVELLE-GUINEE</option>
+                                                                    <option value="PITCAIRN">PITCAIRN (ILE)</option>
+                                                                    <option value="SALOMON">SALOMON (ILES)</option>
+                                                                    <option value="SAMOA AMERICAINES">SAMOA AMERICAINES</option>
+                                                                    <option value="SAMOA OCCIDENTALES">SAMOA OCCIDENTALES</option>
+                                                                    <option value="505">TERR. DES ETATS-UNIS D'AMERIQUE EN OCEANIE</option>
+                                                                    <option value="TOKELAU">TOKELAU</option>
+                                                                    <option value="TONGA">TONGA</option>
+                                                                    <option value="TUVALU">TUVALU</option>
+                                                                    <option value="VANUATU">VANUATU</option>
+                                                                </optgroup>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-float">
+                                                    <label>Adresse</label>
+                                                    <div class="form-line">
+                                                        <textarea class="form-control" th:field="*{adresse}" required=""></textarea>
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Votre adresse?
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="control-label">Situation familiale</div>
+                                                            <div class="custom-switches-stacked mt-2">
+                                                                <label class="custom-switch">
+                                                                    <input type="radio" th:field="*{situationFamiliale}" value="celibataire" class="custom-switch-input" checked>
+                                                                    <span class="custom-switch-indicator"></span>
+                                                                    <span class="custom-switch-description">Célibataire</span>
+                                                                </label>
+                                                                <label class="custom-switch">
+                                                                    <input type="radio" th:field="*{situationFamiliale}" value="marie" class="custom-switch-input">
+                                                                    <span class="custom-switch-indicator"></span>
+                                                                    <span class="custom-switch-description">Marié</span>
+                                                                </label>
+                                                                <label class="custom-switch">
+                                                                    <input type="radio" th:field="*{situationFamiliale}" value="divorce" class="custom-switch-input">
+                                                                    <span class="custom-switch-indicator"></span>
+                                                                    <span class="custom-switch-description">Divorcé</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Enfants</label>
+                                                            <select class="form-control selectric">
+                                                                <option>Children</option>
+                                                                <option>0</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Sexe</label>
+                                                            <div class="selectgroup w-100 ionicons" id="icons">
+                                                                <label class="selectgroup-item">
+                                                                    <input type="radio" th:field="*{genre}" value="female" class="selectgroup-input-radio">
+                                                                    <span class="selectgroup-button">
+                                                                       <i class="ion-woman" data-pack="default" data-tags="female, lady, girl, dudette"></i> Woman
+                                                                   </span>
+                                                                </label>
+                                                                <label class="selectgroup-item">
+                                                                    <input type="radio" th:field="*{genre}" value="male" class="selectgroup-input-radio">
+                                                                    <span class="selectgroup-button">
+                                                                       <i class="ion-man" data-pack="default" data-tags="male, guy, boy, dude"></i> Man
+                                                                   </span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion">
+                                            <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-2">
+                                                <h4>Informations professionnelles</h4>
+                                            </div>
+                                            <div class="accordion-body collapse" id="panel-body-2" data-parent="#accordion">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Matricule</label>
+                                                            <input type="text" class="form-control" th:field="*{matricule}" placeholder="matricule" required="">
+                                                            <div class="invalid-feedback">
+                                                                Votre matricule?
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Departements</label>
+                                                            <select class="form-control selectric" th:field="*{departement.nomDepart}">
+                                                                <option th:each="dpart : ${deparements}"
+                                                                        th:text="${dpart.nomDepart}"
+                                                                        th:value="${dpart.nomDepart}">service</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Categories</label>
+                                                            <select name=""  class="form-control selectric">
+                                                                <option selected>categorie</option>
+                                                                <option value="">Option 2</option>
+                                                                <option value="">Option 3</option>
+                                                                <option value="">Option 4</option>
+                                                                <option value="">Option 5</option>
+                                                                <option value="">Option 6</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Contrat</label>
+                                                            <select name=""  class="form-control selectric">
+                                                                <option selected>contrat</option>
+                                                                <option value="">Option 2</option>
+                                                                <option value="">Option 3</option>
+                                                                <option value="">Option 4</option>
+                                                                <option value="">Option 5</option>
+                                                                <option value="">Option 6</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>CNSS</label>
+                                                            <input type="text" th:field="*{CNSS}" class="form-control" placeholder="cnss">
+                                                            <div class="invalid-feedback">
+                                                                Votre cnss?
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Responsable</label>
+                                                            <input type="text" th:field="*{departement.resp.prenom}" class="form-control" placeholder="responsable">
+                                                            <div class="invalid-feedback">
+                                                                Votre responsable?
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Postes</label>
+                                                            <select name=""  class="form-control selectric">
+                                                                <option selected>poste</option>
+                                                                <option value="">Option 2</option>
+                                                                <option value="">Option 3</option>
+                                                                <option value="">Option 4</option>
+                                                                <option value="">Option 5</option>
+                                                                <option value="">Option 6</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Salaire</label>
+                                                            <input type="number" class="form-control" th:field="*{salaire}" placeholder="salaire" required="">
+                                                            <div class="invalid-feedback">
+                                                                Votre salaire?
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="custom-switch mt-2">
+                                                        <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input">
+                                                        <span class="custom-switch-indicator"></span>
+                                                        <span class="custom-switch-description">Activé compte</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion">
+                                            <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-3">
+                                                <h4>Coordonne bancaire</h4>
+                                            </div>
+                                            <div class="accordion-body collapse" id="panel-body-3" data-parent="#accordion">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Nom de banque</label>
+                                                            <select name=""  class="form-control selectric">
+                                                                <option selected>bank name</option>
+                                                                <option value="">Option 2</option>
+                                                                <option value="">Option 3</option>
+                                                                <option value="">Option 4</option>
+                                                                <option value="">Option 5</option>
+                                                                <option value="">Option 6</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>RIB</label>
+                                                            <input type="text" class="form-control" placeholder="RIB">
+                                                            <div class="invalid-feedback">
+                                                                Votre RIB?
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Adresse</label>
+                                                    <div class="form-line">
+                                                        <textarea class="form-control"  placeholder="address"></textarea>
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Votre adresse?
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer" style="background-color: #f5f5f5">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i data-feather="save"></i> Enregistrer
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- setting sidebar-->
+            <span th:replace="fragment/menus::settingSidebar"></span>
+        </div>
+
+        <!-- footer-->
+        <span th:replace="fragment/menus::footer"></span>
+
+    </div>
+</div>
+<!-- General JS Scripts-->
+<span th:replace="fragment/menus::js_form"></span>
+
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<!-- index.html  21 Nov 2019 03:44:50 GMT -->
+<head>
+    <span th:replace="fragment/menus::header"></span>
+</head>
+
+<body>
+<div class="loader"></div>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <!-- navbar -->
+        <span th:replace="fragment/menus::navbar"></span>
+
+        <!-- sidebar -->
+        <span th:replace="fragment/menus::sidebar"></span>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-tachometer-alt"></i> Home</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-2">
+                    <p>Dashboard</p>
+                </div>
+            </div>
+            <section class="section">
+                <div class="row ">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <span class="text-black-50">Employés</span>
+                                                <div class="progress mt-1 mb-1" data-height="8">
+                                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img height="70px" src="assets/img/banner/1.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <span class="text-black-50">Transports</span>
+                                                <div class="progress mt-1 mb-1" data-height="8">
+                                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img height="70px" src="assets/img/banner/2.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <span class="text-black-50">Utilisateurs</span>
+                                                <div class="progress mt-1 mb-1" data-height="8">
+                                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img height="70px" src="assets/img/banner/4.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <a href="">
+                                        <div class="row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                                <div class="card-content">
+                                                    <span class="text-black-50">Formations</span>
+                                                    <div class="progress mt-1 mb-1" data-height="8">
+                                                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                                <div class="banner-img">
+                                                    <img height="70px" src="assets/img/banner/3.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <span class="text-black-50">Recrutement</span>
+                                                <div class="progress mt-1 mb-1" data-height="8">
+                                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img width="80px" height="70px" src="assets/img/banner/5.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <span class="text-black-50">Paie</span>
+                                                <div class="progress mt-1 mb-1" data-height="8">
+                                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img height="70px" src="assets/img/banner/6.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                            <div class="card-content">
+                                                <span class="text-black-50">Présences</span>
+                                                <div class="progress mt-1 mb-1" data-height="8">
+                                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                            <div class="banner-img">
+                                                <img height="70px" src="assets/img/banner/7.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card card-info">
+                            <div class="card-statistic-4">
+                                <div class="align-items-center justify-content-between">
+                                    <a href="">
+                                        <div class="row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                                <div class="card-content">
+                                                    <span class="text-black-50">Congés</span>
+                                                    <div class="progress mt-1 mb-1" data-height="8">
+                                                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="50%" aria-valuenow="50"
+                                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                                <div class="banner-img">
+                                                    <img height="70px" src="assets/img/banner/8.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- setting sidebar-->
+            <span th:replace="fragment/menus::settingSidebar"></span>
+
+        </div>
+
+        <!-- footer-->
+        <span th:replace="fragment/menus::footer"></span>
+
+    </div>
+</div>
+<!-- General JS Scripts -->
+<script src="assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
+<!-- Page Specific JS File -->
+<script src="assets/js/page/index.js"></script>
+<!-- Template JS File -->
+<script src="assets/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="assets/js/custom.js"></script>
+</body>
+
+<!-- index.html  21 Nov 2019 03:47:04 GMT -->
+</html>

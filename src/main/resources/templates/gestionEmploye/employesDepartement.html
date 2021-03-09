@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<!-- index.html  21 Nov 2019 03:44:50 GMT -->
+<head>
+    <span th:replace="fragment/menus::header"></span>
+    <link rel="stylesheet" th:href="@{../assets/bundles/owlcarousel2/dist/assets/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{../assets/bundles/owlcarousel2/dist/assets/owl.theme.default.min.css}">
+</head>
+
+<body>
+<div class="loader"></div>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <!-- navbar -->
+        <span th:replace="fragment/menus::navbar"></span>
+
+        <!-- sidebar -->
+        <span th:replace="fragment/menus::sidebar"></span>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills" id="myTab3" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="home-tab3" data-toggle="tab" href="#home3" role="tab"
+                                   aria-controls="home" aria-selected="true" th:classappend="${departement.getEmployes().size()} >= 4 ? 'active':''">
+                                    <i data-feather="minimize"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab"
+                                   aria-controls="profile" aria-selected="false" th:classappend="${departement.getEmployes().size()} >= 4 ? '':'active'">
+                                    <i data-feather="list"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <form action="">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" required="" placeholder="" aria-label="">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i data-feather="save"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--
+                    <div class="col-md-4">
+                        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                            <ul class="nav nav-pills" id="myTab3" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#home3" role="tab"
+                                       aria-controls="home" aria-selected="true">
+                                        <i data-feather="minimize"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab"
+                                       aria-controls="profile" aria-selected="false">
+                                        <i data-feather="list"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab3" data-toggle="tab" href="#contact3" role="tab"
+                                       aria-controls="contact" aria-selected="false">
+                                        <i data-feather="user-plus">profile</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="tab-content" id="myTabContent2">
+                    <div class="tab-pane fade" id="home3" role="tabpanel" aria-labelledby="home-tab3"
+                         th:classappend="${departement.getEmployes().size()} >= 4 ? 'show active':''">
+                        <div id="myTable">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-lg-12">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h4 th:if="${departement.getEmployes().size()} >= 4">
+                                                <span>Liste des Employés</span>
+                                            </h4>
+                                            <h4 th:unless="${departement.getEmployes().size()} >= 4">
+                                                <span>Le nombre d'employés doit être superieur à 3</span>
+                                            </h4>
+                                            <div class="card-header-action">
+                                                <button type="button" class="btn btn-icon btn-primary" id="edit_service" data-toggle="modal" data-target="#basicModal">
+                                                    <i class="far fa-edit"></i> Departement
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="owl-carousel owl-theme" th:classappend="${departement.getEmployes().size()} >= 4 ? 'users-carousel':''">
+                                                <div th:each="employe : ${departement.getEmployes()}">
+                                                    <div class="user-item">
+                                                        <span id="edit_employe" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                                            <span th:if="${employe.photoUrl}">
+                                                                 <img th:src="@{/getPhotos/{id}(id=${employe.id})}" class="img-fluid" alt="image"
+                                                                      data-toggle="tooltip" th:title="${employe.id}" width="50px">
+                                                            </span>
+                                                            <span th:unless="${employe.photoUrl}" >
+                                                                <img src="../assets/img/users/user-3.png" class="img-fluid"
+                                                                     data-toggle="tooltip" th:title="${employe.matricule}" width="50px">
+                                                            </span>
+                                                        </span>
+                                                        <div class="user-details">
+                                                            <div class="user-name">
+                                                                <span class="badge badge-light">
+                                                                    <span th:text="${employe.prenom.toUpperCase()}"></span>
+                                                                    <span th:text="${employe.nom.toUpperCase()}"></span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="text-job text-muted">
+                                                                <span th:if="${employe.departement.resp.prenom}==${employe.prenom}">
+                                                                    <span class="badge badge-primary">
+                                                                        <span> Chef de </span>
+                                                                        <span th:text="${employe.departement.nomDepart}"></span>
+                                                                    </span>
+                                                                </span>
+                                                                <span th:unless="${employe.departement.resp.prenom}==${employe.prenom}">
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3"
+                         th:classappend="${departement.getEmployes().size()} >= 4 ? '':'show active'">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover" id="save-stage" style="width:100%;" data-page-length='5'>
+                                <thead>
+                                <tr>
+                                    <th>MATRICULE</th>
+                                    <th>NOM</th>
+                                    <th>PRENOM</th>
+                                    <th>PHOTO</th>
+                                    <th>TELEPHONE</th>
+                                    <th>EMAIL</th>
+                                    <th>SALAIRE</th>
+                                    <th class="d-none">ÂGE</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${#lists.isEmpty(departement.getEmployes())}" class="btn-default">
+                                    <td colspan="6" align="center">No Employe Entered Yet!!!</td>
+                                </tr>
+                                <tr th:each="employe : ${departement.getEmployes()}">
+                                    <td th:text="${employe.matricule}">Create a mobile app</td>
+                                    <td th:text="${employe.nom}">Create a mobile app</td>
+                                    <td th:text="${employe.prenom}">Create a mobile app</td>
+                                    <td>
+                                        <span th:if="${employe.photoUrl}">
+                                            <img th:src="@{/getPhotos/{id}(id=${employe.id})}" alt="..."
+                                                 data-toggle="tooltip" th:title="${employe.id}" width="35">
+                                        </span>
+                                        <span th:unless="${employe.photoUrl}">
+                                            <img src="../assets/img/users/user-1.png"  alt="..."
+                                                 data-toggle="tooltip" th:title="${employe.id}" width="35">
+                                        </span>
+                                    </td>
+                                    <td th:text="${employe.telephone}">Create a mobile app</td>
+                                    <td th:text="${employe.email}">Create a mobile app</td>
+                                    <td th:text="${employe.salaire}">Create a mobile app</td>
+                                    <td class="d-none" th:text="${employe.age}">Create a mobile app</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- basic modal -->
+            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-whitesmoke br">
+                            <h5 class="modal-title" id="exampleModalLabel">Edite <span th:text="${departement.nomDepart}"></span></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form th:action="@{/new-service}" method="post" th:object="${departement}" class="needs-validation" novalidate="">
+                        <div class="modal-body">
+                            <div class="form-group d-none">
+                                <label>Nom de service</label>
+                                <input type="text" th:field="*{id}" class="form-control" placeholder="service name" required="">
+                                <div class="invalid-feedback">
+                                    What's your service name?
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Nom de service</label>
+                                        <input type="text" th:field="*{nomDepart}" class="form-control" placeholder="service name" required="">
+                                        <div class="invalid-feedback">
+                                            What's your service name?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Responsable</label>
+                                        <select th:field="*{Resp.nom}"  class="form-control selectric">
+                                            <option th:each="emp : ${employes}"
+                                                    th:text="${emp.nom}"
+                                                    th:value="${emp.nom}">service
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <label>Description</label>
+                                <textarea class="form-control" th:field="*{description}" placeholder="description" required=""></textarea>
+                                <div class="invalid-feedback">
+                                    What do you wanna say?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-whitesmoke br">
+                            <button type="submit" class="btn btn-icon btn-primary">
+                                <i data-feather="save"></i> Save </button>
+                            <button type="button" class="btn btn-icon btn-danger" data-dismiss="modal">
+                                <i data-feather="x-square"></i>
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- setting sidebar-->
+            <span th:replace="fragment/menus::settingSidebar"></span>
+
+        </div>
+
+        <!-- footer-->
+        <span th:replace="fragment/menus::footer"></span>
+
+    </div>
+</div>
+
+<span th:replace="fragment/menus::js"></span>
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable .card").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript" th:inline="javascript">
+    $(document).ready(function (){
+        $('.card-header-action #edit_service').on('click',function (event) {
+            $('.modal #basicModal').modal();
+        })
+        $('.user-item #edit_employe').on('click',function (event) {
+            $('.modal .bd-example-modal-lg').modal();
+        })
+    });
+</script>
+
+<!-- JS Libraies -->
+<script src="../assets/bundles/chartjs/chart.min.js"></script>
+<script src="../assets/bundles/owlcarousel2/dist/owl.carousel.min.js"></script>
+<script src="../assets/bundles/summernote/summernote-bs4.js"></script>
+<!-- Page Specific JS File -->
+<script src="../assets/js/page/widget-data.js"></script>
+</body>
+
+<!-- index.html  21 Nov 2019 03:47:04 GMT -->
+</html>
